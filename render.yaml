@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: recetario-backend
+    env: node
+    buildCommand: |
+      cd backend
+      npm install
+    startCommand: |
+      cd backend
+      node app.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://recetario-frontend.onrender.com
+
+  - type: web
+    name: recetario-frontend
+    env: node
+    buildCommand: |
+      cd frontend
+      npm install
+      npm run build
+    startCommand: |
+      cd frontend
+      npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4200
+      - key: API_URL
+        value: https://recetario-backend.onrender.com 

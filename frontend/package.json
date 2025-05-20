@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port ${PORT:-4200}",
-    "start:prod": "ng serve --configuration production --host 0.0.0.0 --port ${PORT:-4200}",
+    "start:prod": "ng serve --configuration production --host 0.0.0.0 --port ${PORT:-4200} --allowed-hosts recetario-frontend.onrender.com",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

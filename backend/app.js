@@ -7,7 +7,7 @@ const app = express();
 
 // Configuración de CORS más permisiva para desarrollo
 app.use(cors({
-  origin: true, // Permite todas las origenes en desarrollo
+  origin: '*', // Permite todas las origenes en desarrollo
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
@@ -46,7 +46,7 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
   console.log(`CORS configurado para permitir todas las origenes`);
 }); 

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '/api'  // En producción, usaremos rutas relativas
+  apiUrl: 'https://recetario-backend.onrender.com/api'
 }; 

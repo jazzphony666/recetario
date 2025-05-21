@@ -33,9 +33,14 @@
             "scripts": [],
             "sourceMap": false,
             "namedChunks": false,
-            "optimization": false,
-            "vendorChunk": false,
-            "buildOptimizer": false,
+            "optimization": {
+              "scripts": true,
+              "styles": {
+                "minify": true,
+                "inlineCritical": false
+              },
+              "fonts": false
+            },
             "budgets": [
               {
                 "type": "initial",

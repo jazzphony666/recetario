@@ -1,14 +1,11 @@
 {
   "name": "frontend",
   "version": "0.0.0",
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port ${PORT:-4200}",
-    "build": "ng build --configuration production --optimization=false",
-    "start:prod": "npm run build && npx serve -s dist/frontend --listen ${PORT:-4200}",
+    "start:prod": "ng serve --configuration production --host 0.0.0.0 --port ${PORT:-4200} --allowed-hosts recetario-frontend.onrender.com",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -38,7 +35,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "serve": "^14.2.1",
     "typescript": "~5.4.2"
   }
 }

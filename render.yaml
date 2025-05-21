@@ -34,4 +34,7 @@ services:
       - key: PORT
         value: 4200
       - key: API_URL
-        value: https://recetario-backend.onrender.com 
+        value: https://recetario-backend.onrender.com
+    plan: free
+    healthCheckPath: /
+    autoDeploy: true 

@@ -34,10 +34,27 @@ app.use((req, res, next) => {
   next();
 });
 
-// Conexión a MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Conectado a MongoDB'))
-  .catch(err => console.error('Error conectando a MongoDB:', err));
+// Configuración de MongoDB
+const mongooseOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+};
+
+// Conexión a MongoDB con reintentos
+const connectWithRetry = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, mongooseOptions);
+    console.log('Conectado a MongoDB');
+  } catch (err) {
+    console.error('Error conectando a MongoDB:', err);
+    console.log('Reintentando conexión en 5 segundos...');
+    setTimeout(connectWithRetry, 5000);
+  }
+};
+
+connectWithRetry();
 
 // Rutas
 const recetasRouter = require('./routes/recetas');

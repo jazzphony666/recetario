@@ -5,9 +5,20 @@ require('dotenv').config();
 
 const app = express();
 
-// Configuración de CORS más permisiva para desarrollo
+// Configuración de CORS
+const allowedOrigins = [
+  'http://localhost:4200',
+  'https://recetario-frontend.onrender.com'
+];
+
 app.use(cors({
-  origin: '*', // Permite todas las origenes en desarrollo
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
@@ -19,6 +30,7 @@ app.use(express.json());
 // Middleware para logging de peticiones
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
+  console.log('Request body:', req.body);
   next();
 });
 
@@ -48,5 +60,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
-  console.log(`CORS configurado para permitir todas las origenes`);
+  console.log(`CORS configurado para permitir origenes: ${allowedOrigins.join(', ')}`);
 }); 

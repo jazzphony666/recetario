@@ -34,9 +34,9 @@
             "sourceMap": false,
             "namedChunks": false,
             "optimization": {
-              "scripts": false,
+              "scripts": true,
               "styles": {
-                "minify": false,
+                "minify": true,
                 "inlineCritical": false
               },
               "fonts": false
@@ -68,7 +68,15 @@
                   "maximumError": "8kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": false
+              }
             },
             "development": {
               "optimization": false,

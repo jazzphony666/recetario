@@ -33,6 +33,8 @@
             "scripts": [],
             "sourceMap": false,
             "namedChunks": false,
+            "vendorChunk": false,
+            "buildOptimizer": true,
             "optimization": {
               "scripts": true,
               "styles": {

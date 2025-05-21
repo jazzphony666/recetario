@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port ${PORT:-4200}",
-    "build": "ng build --configuration production",
+    "build": "node --max-old-space-size=512 ./node_modules/@angular/cli/bin/ng build --configuration production --optimization=true --vendor-chunk=false --build-optimizer=true",
     "start:prod": "npm run build && npx serve -s dist/frontend -l ${PORT:-4200}",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

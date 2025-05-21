@@ -31,16 +31,9 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "sourceMap": true,
-            "namedChunks": true,
-            "optimization": {
-              "scripts": true,
-              "styles": {
-                "minify": true,
-                "inlineCritical": false
-              },
-              "fonts": false
-            },
+            "sourceMap": false,
+            "namedChunks": false,
+            "optimization": false,
             "budgets": [
               {
                 "type": "initial",

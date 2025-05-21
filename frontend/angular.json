@@ -33,14 +33,7 @@
             "scripts": [],
             "sourceMap": false,
             "namedChunks": false,
-            "optimization": {
-              "scripts": true,
-              "styles": {
-                "minify": true,
-                "inlineCritical": false
-              },
-              "fonts": false
-            },
+            "optimization": false,
             "budgets": [
               {
                 "type": "initial",

@@ -28,7 +28,9 @@ export interface Receta {
 export class RecetaService {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log('API URL:', this.apiUrl); // Para debugging
+  }
 
   private handleError(error: HttpErrorResponse) {
     console.error('Error en el servicio de recetas:', error);
